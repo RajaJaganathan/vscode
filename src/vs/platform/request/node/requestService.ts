@@ -44,7 +44,7 @@ export class RequestService implements IRequestService {
 
 	request(options: IRequestOptions, requestFn: IRequestFunction = request): TPromise<IRequestContext> {
 		if (this.isOfflineMode) {
-			return TPromise.as(null);
+			return TPromise.as({ res: { headers: {}, }, stream: null });
 		}
 
 		this.logService.trace('RequestService#request', options.url);
